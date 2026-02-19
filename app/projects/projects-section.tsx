@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import Link from "next/link";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
 const projects = [
@@ -90,42 +91,46 @@ export default function ProjectsSection() {
 
       <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {projects.map((project) => (
-          <Card
+          <Link
             key={project.id}
-            className="gap-0 overflow-hidden rounded-2xl border border-slate-200 py-0"
+            href="/projects/project-details"
+            className="block"
           >
-            <img
-              src="/test.jpg"
-              alt="Project image"
-              className="w-full h-32 object-cover"
-            />
-            <CardContent className="space-y-2.5 p-4">
-              <CardTitle className="text-xl font-semibold leading-snug text-[#0C4C9B]">
-                {project.title}
-              </CardTitle>
+            <Card className="gap-0 overflow-hidden rounded-2xl border border-slate-200 py-0 transition hover:border-[#0C4C9B]/40">
+              <img
+                src="/test.jpg"
+                alt="Project image"
+                className="w-full h-32 object-cover"
+              />
+              <CardContent className="space-y-2.5 p-4">
+                <CardTitle className="text-xl font-semibold leading-snug text-[#0C4C9B]">
+                  {project.title}
+                </CardTitle>
 
-              <p className="text-sm leading-relaxed text-slate-700">
-                {project.description}
-              </p>
-
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-[#0C4C9B] px-2 py-0.5 text-xs font-semibold text-white">
-                  Completed
-                </span>
-                <span className="rounded-full bg-[#0C4C9B] px-2 py-0.5 text-xs font-semibold text-white">
-                  Intermediate
-                </span>
-              </div>
-
-              <div className="space-y-1 text-xs text-slate-500 sm:text-sm">
-                <p>Location: {project.location}</p>
-                <p>
-                  Start date: {project.startDate} | End date: {project.endDate}
+                <p className="text-sm leading-relaxed text-slate-700">
+                  {project.description}
                 </p>
-                <p>Project Language: {project.language}</p>
-              </div>
-            </CardContent>
-          </Card>
+
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full bg-[#0C4C9B] px-2 py-0.5 text-xs font-semibold text-white">
+                    Completed
+                  </span>
+                  <span className="rounded-full bg-[#0C4C9B] px-2 py-0.5 text-xs font-semibold text-white">
+                    Intermediate
+                  </span>
+                </div>
+
+                <div className="space-y-1 text-xs text-slate-500 sm:text-sm">
+                  <p>Location: {project.location}</p>
+                  <p>
+                    Start date: {project.startDate} | End date:{" "}
+                    {project.endDate}
+                  </p>
+                  <p>Project Language: {project.language}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </section>
